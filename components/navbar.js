@@ -69,10 +69,15 @@ const Navbar = props => {
         <Box flex={1} />
 
         <Stack direction="row" align="center" spacing={1}>
-          <LinkItem href="/posts" path={path}>
-            Posts
+          <LinkItem href="/resume" path={path}>
+            Resume
           </LinkItem>
-          <ThemeToggleButton />
+          <LinkItem href="/blogs" path={path}>
+            Blogs
+          </LinkItem>
+          <Box ml={2}>
+            <ThemeToggleButton />
+          </Box>
         </Stack>
       </Container>
     </Box>

@@ -61,7 +61,7 @@ const Home = () => (
         bg={useColorModeValue('rgba(196,198,220,0.6)', 'rgba(30,32,48,0.8)')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m Hoang, this is my draft portfolio website!
+        Hello, I&apos;m Hoang, this is my draft website!
       </Box>
 
       <Box display={{ md: 'flex' }} alignItems="flex-start" gap={8} mb={2}>
@@ -214,4 +214,3 @@ const Home = () => (
 )
 
 export default Home
-export { getServerSideProps } from '../components/chakra'

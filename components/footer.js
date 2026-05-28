@@ -11,6 +11,10 @@ const Footer = () => {
         <Link href="https://www.craftz.dog/" target="_blank">
           Takuya Matsuyama
         </Link>
+        {' · Built with '}
+        <Link href="https://claude.ai/code" target="_blank">
+          Claude Code
+        </Link>
       </Box>
     </Box>
   )
