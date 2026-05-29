@@ -5,6 +5,8 @@ import { getAllPosts, getPostBySlug } from '../../lib/blogs'
 const BlogPost = ({ title, date, contentHtml }) => {
   const proseColor = useColorModeValue('gray.800', 'gray.100')
   const dateColor = useColorModeValue('gray.500', 'gray.400')
+  const codeBg = useColorModeValue('gray.100', 'whiteAlpha.200')
+  const preBg = useColorModeValue('gray.100', 'whiteAlpha.100')
 
   return (
     <Layout title={title}>
@@ -33,14 +35,14 @@ const BlogPost = ({ title, date, contentHtml }) => {
             li: { mb: 1 },
             a: { color: 'blue.400', textDecoration: 'underline' },
             code: {
-              bg: useColorModeValue('gray.100', 'whiteAlpha.200'),
+              bg: codeBg,
               px: 1,
               borderRadius: 'sm',
               fontSize: 'xs',
               fontFamily: 'mono'
             },
             pre: {
-              bg: useColorModeValue('gray.100', 'whiteAlpha.100'),
+              bg: preBg,
               p: 4,
               borderRadius: 'md',
               overflowX: 'auto',

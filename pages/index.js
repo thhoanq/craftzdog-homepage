@@ -19,58 +19,67 @@ import Section from '../components/section'
 import { IoLogoGithub } from 'react-icons/io5'
 import Image from 'next/image'
 
-const PublicationItem = ({ title, authors, venue, year, href }) => (
-  <Box mb={3} fontSize="sm">
-    <Text fontWeight="500">
-      {href ? (
-        <Link href={href} target="_blank">
-          {title}
-        </Link>
-      ) : (
-        title
-      )}
-    </Text>
-    {authors && (
-      <Text color={useColorModeValue('gray.500', 'gray.500')} fontSize="xs">
-        {authors}
+const PublicationItem = ({ title, authors, venue, year, href }) => {
+  const mutedColor = useColorModeValue('gray.500', 'gray.500')
+  const subColor = useColorModeValue('gray.600', 'gray.400')
+  return (
+    <Box mb={3} fontSize="sm">
+      <Text fontWeight="500">
+        {href ? (
+          <Link href={href} target="_blank">
+            {title}
+          </Link>
+        ) : (
+          title
+        )}
       </Text>
-    )}
-    <Text color={useColorModeValue('gray.600', 'gray.400')}>
-      {venue} &middot; {year}
-    </Text>
-  </Box>
-)
-
-const ProjectItem = ({ title, period, tags, items }) => (
-  <Box mb={6} fontSize="sm">
-    <Flex justify="space-between" align="baseline" gap={2} mb={1}>
-      <Text fontWeight="700" fontSize="md">
-        {title}
-      </Text>
-      {period && (
-        <Text flexShrink={0} fontSize="xs" color={useColorModeValue('gray.500', 'gray.500')}>
-          {period}
+      {authors && (
+        <Text color={mutedColor} fontSize="xs">
+          {authors}
         </Text>
       )}
-    </Flex>
-    {tags && (
-      <Text
-        fontSize="xs"
-        fontWeight="600"
-        color={useColorModeValue('#2959aa', '#82aaff')}
-        letterSpacing="0.05em"
-        mb={2}
-      >
-        {tags.join(' • ')}
+      <Text color={subColor}>
+        {venue} &middot; {year}
       </Text>
-    )}
-    {items && items.map((item, i) => (
-      <Text key={i} color={useColorModeValue('gray.600', 'gray.400')} mb={1}>
-        &bull; {item}
-      </Text>
-    ))}
-  </Box>
-)
+    </Box>
+  )
+}
+
+const ProjectItem = ({ title, period, tags, items }) => {
+  const mutedColor = useColorModeValue('gray.500', 'gray.500')
+  const accentColor = useColorModeValue('#2959aa', '#82aaff')
+  const descColor = useColorModeValue('gray.600', 'gray.400')
+  return (
+    <Box mb={6} fontSize="sm">
+      <Flex justify="space-between" align="baseline" gap={2} mb={1}>
+        <Text fontWeight="700" fontSize="md">
+          {title}
+        </Text>
+        {period && (
+          <Text flexShrink={0} fontSize="xs" color={mutedColor}>
+            {period}
+          </Text>
+        )}
+      </Flex>
+      {tags && (
+        <Text
+          fontSize="xs"
+          fontWeight="600"
+          color={accentColor}
+          letterSpacing="0.05em"
+          mb={2}
+        >
+          {tags.join(' • ')}
+        </Text>
+      )}
+      {items && items.map((item, i) => (
+        <Text key={i} color={descColor} mb={1}>
+          &bull; {item}
+        </Text>
+      ))}
+    </Box>
+  )
+}
 
 const Home = () => (
   <Layout>
