@@ -4,6 +4,7 @@ import {
   Container,
   Heading,
   Box,
+  Flex,
   Button,
   List,
   ListItem,
@@ -18,7 +19,7 @@ import Section from '../components/section'
 import { IoLogoGithub } from 'react-icons/io5'
 import Image from 'next/image'
 
-const PublicationItem = ({ title, venue, year, href }) => (
+const PublicationItem = ({ title, authors, venue, year, href }) => (
   <Box mb={3} fontSize="sm">
     <Text fontWeight="500">
       {href ? (
@@ -29,24 +30,45 @@ const PublicationItem = ({ title, venue, year, href }) => (
         title
       )}
     </Text>
+    {authors && (
+      <Text color={useColorModeValue('gray.500', 'gray.500')} fontSize="xs">
+        {authors}
+      </Text>
+    )}
     <Text color={useColorModeValue('gray.600', 'gray.400')}>
       {venue} &middot; {year}
     </Text>
   </Box>
 )
 
-const ProjectItem = ({ title, description, href }) => (
-  <Box mb={3} fontSize="sm">
-    <Text fontWeight="500">
-      {href ? (
-        <Link href={href} target="_blank">
-          {title}
-        </Link>
-      ) : (
-        title
+const ProjectItem = ({ title, period, tags, items }) => (
+  <Box mb={6} fontSize="sm">
+    <Flex justify="space-between" align="baseline" gap={2} mb={1}>
+      <Text fontWeight="700" fontSize="md">
+        {title}
+      </Text>
+      {period && (
+        <Text flexShrink={0} fontSize="xs" color={useColorModeValue('gray.500', 'gray.500')}>
+          {period}
+        </Text>
       )}
-    </Text>
-    <Text color={useColorModeValue('gray.600', 'gray.400')}>{description}</Text>
+    </Flex>
+    {tags && (
+      <Text
+        fontSize="xs"
+        fontWeight="600"
+        color={useColorModeValue('#2959aa', '#82aaff')}
+        letterSpacing="0.05em"
+        mb={2}
+      >
+        {tags.join(' • ')}
+      </Text>
+    )}
+    {items && items.map((item, i) => (
+      <Text key={i} color={useColorModeValue('gray.600', 'gray.400')} mb={1}>
+        &bull; {item}
+      </Text>
+    ))}
   </Box>
 )
 
@@ -110,19 +132,20 @@ const Home = () => (
           About
         </Heading>
         <Paragraph>
-          I am a master student at the{' '}
+          I am a master&apos;s student in Electronics and Telecommunications at{' '}
           <Link
             as={NextLink}
             href="https://www.hcmus.edu.vn/"
             passHref
             target="_blank"
           >
-            Faculty of Electronics and Telecommunications, HCMUS
+            HCMUS
           </Link>
-          , interested in Post-Quantum Cryptography, RISC-V SoC design, and
-          hardware accelerators. I also serve as a Teaching Assistant at HCMUS.
-          Outside of research, I enjoy spending time with close friends and
-          family.
+          , where I also work as a Teaching Assistant. My research sits at the
+          intersection of hardware security and computer architecture — focusing
+          on Post-Quantum Cryptography, RISC-V SoC design, and lightweight
+          hardware accelerators. When I am away from the lab, I value time spent
+          with close friends and family.
         </Paragraph>
       </Section>
 
@@ -142,16 +165,17 @@ const Home = () => (
           Publications
         </Heading>
         <PublicationItem
-          title="Title of Your Paper"
-          venue="Conference / Journal Name"
+          title="Design a Homogeneous Multi-Core SoC Based on NoC with Lightweight Cryptography Cores in FPGA"
+          authors={<><Text as="span" textDecoration="underline">Huy-Hoang Trinh</Text>, Khai-Minh Ma, Tran-Bao-Thuong Cao, Duc-Hung Le</>}
+          venue="ATC 2025, Hanoi University of Industry (HaUI)"
           year="2025"
-          href=""
+          href="https://doi.org/10.1109/ATC67618.2025.11268635"
         />
         <PublicationItem
-          title="Another Paper Title"
-          venue="Conference / Journal Name"
+          title="Thiết kế hệ thống bảo mật dữ liệu dựa trên CPU RISC-V 32-bit trên FPGA và công nghệ SKY130"
+          authors={<>Tôn Nữ Tâm Nhi, <Text as="span" textDecoration="underline">Trịnh Huy Hoàng</Text>, Mã Khải Minh, Lê Đức Hùng</>}
+          venue="REV-ECIT 2024, Đại học Phenikaa"
           year="2024"
-          href=""
         />
       </Section>
 
@@ -160,14 +184,34 @@ const Home = () => (
           Projects
         </Heading>
         <ProjectItem
-          title="Project Name"
-          description="Short description of what this project does."
-          href=""
+          title="Multi-core SoC based on NoC"
+          period="2025"
+          tags={['RISC-V', 'NETWORK-ON-CHIP', 'LIGHTWEIGHT CRYPTOGRAPHY', 'FPGA']}
+          items={[
+            'Designing a homogeneous multi-core system with four 64-bit Rocket cores on the VC707 FPGA.',
+            'Integrating lightweight cryptographic accelerators as custom MMIO peripherals.',
+            'Implementing a Network-on-Chip (NoC) fabric for scalable inter-core communication.',
+          ]}
         />
         <ProjectItem
-          title="Another Project"
-          description="Short description of what this project does."
-          href=""
+          title="32-bit RISC-V SoC on FPGA"
+          period="2024"
+          tags={['RISC-V', 'LIGHTWEIGHT CRYPTOGRAPHY', 'FPGA']}
+          items={[
+            'Integrated a VexRiscv soft-core processor with lightweight cryptographic accelerators on the DE0-Nano FPGA.',
+            'Implemented hardware cores for the KLEIN block cipher and BLAKE2s hash function.',
+            'Verified end-to-end functionality through bare-metal C firmware running on the soft core.',
+          ]}
+        />
+        <ProjectItem
+          title="KLEIN Cryptographic Accelerator"
+          period="2024"
+          tags={['LIGHTWEIGHT CRYPTOGRAPHY', 'HARDWARE DESIGN']}
+          items={[
+            'Studied the KLEIN lightweight block cipher algorithm from primary literature.',
+            'Implemented the encryption/decryption datapath and testbench in Verilog HDL.',
+            'Verified functional correctness using ModelSim simulation.',
+          ]}
         />
       </Section>
 
@@ -180,12 +224,16 @@ const Home = () => (
           Born in Vietnam.
         </BioSection>
         <BioSection>
+          <BioYear>2018–2021</BioYear>
+          Studied at Nguyen Huu Huan High School, Ho Chi Minh City.
+        </BioSection>
+        <BioSection>
           <BioYear>2021–2025</BioYear>
-          B.Eng. in Electronics and Telecommunications, HCMUS.
+          B.Sc. in Electronics and Telecommunications, HCMUS.
         </BioSection>
         <BioSection>
           <BioYear>2025–present</BioYear>
-          M.Eng. student &amp; Teaching Assistant, HCMUS.
+          Master&apos;s student &amp; Teaching Assistant, HCMUS.
         </BioSection>
       </Section>
 

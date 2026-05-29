@@ -1,20 +1,18 @@
 ---
 title: "Hello World"
 date: "2026-05-28"
-description: "Bài viết đầu tiên trên blog của tôi."
+description: "Bài viết đầu tiên của mình 😆"
 tags: ["general"]
 ---
 
 ## Xin chào!
 
-Đây là bài blog đầu tiên của tôi. Tôi là **Huy-Hoang Trinh**, master student tại HCMUS, quan tâm đến Post-Quantum Cryptography và RISC-V.
+Mình là Hoàng và là một người học đang cố gắng cải thiện bản thân từng ngày.
 
-## Kế hoạch cho blog này
 
-Tôi sẽ viết về:
+## Dự định
 
-- Nghiên cứu trong lĩnh vực mật mã học hậu lượng tử
-- Thiết kế SoC trên RISC-V
-- Các ghi chú học thuật và kinh nghiệm làm Teaching Assistant
+Mình tạo blog này với mục đích chính là cải thiện nhiều khuyết điểm của bản thân và lưu lại những gì hay ho mình học được. Chủ đề sẽ là bất cứ cái gì và có thể sẽ nhờ AI hỗ trợ viết **một chút**. Mong những người đọc được đừng quá hà khắc với mình nhé <3.
 
-Hãy theo dõi các bài viết tiếp theo!
+Thân ái và trân trọng,  
+Trịnh Huy Hoàng
