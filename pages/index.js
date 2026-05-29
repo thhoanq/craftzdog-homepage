@@ -229,10 +229,6 @@ const Home = () => (
           Bio
         </Heading>
         <BioSection>
-          <BioYear>2003</BioYear>
-          Born in Vietnam.
-        </BioSection>
-        <BioSection>
           <BioYear>2018–2021</BioYear>
           Studied at Nguyen Huu Huan High School, Ho Chi Minh City.
         </BioSection>
@@ -252,7 +248,7 @@ const Home = () => (
         </Heading>
         <List spacing={1}>
           <ListItem>
-            <Link href="https://github.com/" target="_blank">
+            <Link href="https://github.com/thhoanq" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="purple"
